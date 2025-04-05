@@ -1,12 +1,7 @@
 name: Event filters and activity types
 on: 
  workflow_dispatch:
- pull_request:
-  types:
-   - opened
-   - synchronize
-  branches:
-   - main
+ push :
    
 
  
@@ -18,9 +13,9 @@ jobs:
   steps:
   - name: show the os
     run: | 
-      echo "Triggered by opened or synchronize and base branch should be main"
-      echo "helloo"
-
-      echo "Triggered by $RUNNER_OS"
-      echo "helloo"  
+      echo "event name is ${{github.event_name}}"
+      echo "ref name is ${{github.ref}}"
+      echo "sha name is ${{github.sha}}"
+      echo "actor name is ${{github.actor}}"
+      
      
