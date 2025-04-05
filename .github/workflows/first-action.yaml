@@ -1,20 +1,10 @@
-name: Building block
-on: workflow_dispatch
+name: Workflow events
+on: push
 jobs:
- echo-hello:
+ echo:
   runs-on: ubuntu-latest
   steps:
-  - name: say-hello
-    run: |
-     echo "First output"
-     echo "Second output"
- echo-goodbye:
-  runs-on: ubuntu-latest
-  steps:
-  - name: failed-step
-    run: |
-     echo "I will fail"
-     exit 0
-  - name: say-goodbye
-    run: echo "Goodbye"
+  - name: show the trigger
+    run: echo "Triggered by ${{github.event_name}}
+     "
      
