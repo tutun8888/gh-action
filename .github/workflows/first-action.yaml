@@ -1,10 +1,20 @@
-name: First Workflow
+name: Building block
 on: workflow_dispatch
 jobs:
- first-job:
+ echo-hello:
   runs-on: ubuntu-latest
   steps:
-  - name: print greeting
+  - name: say-hello
     run: |
      echo "First output"
      echo "Second output"
+ echo-goodbye:
+  runs-on: ubuntu-latest
+  steps:
+  - name: failed-step
+    run: |
+     echo "I will fail"
+     exit 1
+  - name: say-goodbye
+    run: echo "Goodbye"
+     
