@@ -1,7 +1,8 @@
 name: Workflow events
 on: 
  push:
- pull_request:
+ schedule:
+  - cron: '*/1 * * * *'
  
   
 jobs:
