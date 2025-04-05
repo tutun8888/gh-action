@@ -1,6 +1,14 @@
-name: Workflow events
+name: Event filters and activity types
 on: 
- workflow_dispatch
+ workflow_dispatch:
+ pull_request:
+  types:
+   - opened
+   - synchronize
+  branches:
+   - main
+   
+
  
  
   
@@ -10,14 +18,9 @@ jobs:
   steps:
   - name: show the os
     run: | 
-      echo "Triggered by $RUNNER_OS"
+      echo "Triggered by opened or synchronize and base branch should be main"
       echo "helloo"
- windows-echo:
-  runs-on: windows-latest
-  steps:
-  - name: show the os
-    shell: bash
-    run: | 
+
       echo "Triggered by $RUNNER_OS"
       echo "helloo"  
      
