@@ -1,15 +1,15 @@
 name: Workflow events
 on: 
- push:
- schedule:
-  - cron: '*/1 * * * *'
+ workflow_dispatch
+ 
  
   
 jobs:
- echo:
+ ubuntu-echo:
   runs-on: ubuntu-latest
   steps:
-  - name: show the trigger
-    run: echo "Triggered by ${{github.event_name}}"
+  - name: show the os
+    run: | 
+      echo "Triggered by ${{RUNNER_OS}"
      
      
