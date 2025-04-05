@@ -10,6 +10,7 @@ jobs:
   steps:
   - name: show the os
     run: | 
-      echo "Triggered by ${{RUNNER_OS}"
+      echo "Triggered by ${{RUNNER_OS}}"
+      echo "helloo"
      
      
