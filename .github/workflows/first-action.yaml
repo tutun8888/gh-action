@@ -17,5 +17,10 @@ jobs:
       echo "ref name is ${{github.ref}}"
       echo "sha name is ${{github.sha}}"
       echo "actor name is ${{github.actor}}"
-      
+ ubuntu-echo2:
+  runs-on: ubuntu-latest
+  steps:
+  - name: show the os
+    run: | 
+      echo "Retrive value is ${{vars.MY_VAR}}
      
