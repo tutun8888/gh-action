@@ -22,5 +22,5 @@ jobs:
   steps:
   - name: show the os
     run: | 
-      echo "Retrive value is ${{vars.MY_VAR}}
+      echo "Retrive value is ${{vars.MY_VAR}}"
      
