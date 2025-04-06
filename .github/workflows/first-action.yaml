@@ -1,5 +1,7 @@
 name: Event filters and activity types
 run-name: contexts ${{inputs.string}}
+env:
+ myjob: "Current"
 on: 
  workflow_dispatch:
   inputs:
@@ -15,6 +17,8 @@ on:
 jobs:
  ubuntu-echo:
   runs-on: ubuntu-latest
+  env:
+   myjob: "new"
   steps:
   - name: show the os
     run: | 
@@ -22,6 +26,7 @@ jobs:
       echo "ref name is ${{github.ref}}"
       echo "sha name is ${{github.sha}}"
       echo "actor name is ${{github.actor}}"
+      echo "env name is ${{env.myjob}}"
  ubuntu-echo2:
   runs-on: ubuntu-latest
   steps:
