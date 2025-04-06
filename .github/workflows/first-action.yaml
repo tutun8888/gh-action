@@ -1,5 +1,5 @@
 name: Event filters and activity types
-run-name: contexts ${{inputs.string}}
+run-name: contexts ${{inputs.debug}}
 env:
  myjob: "Current"
 on: 
@@ -21,6 +21,7 @@ jobs:
    myjob: "new"
   steps:
   - name: show the os
+    if: ${{inputs.debug}}
     run: | 
       echo "event name is ${{github.event_name}}"
       echo "ref name is ${{github.ref}}"
