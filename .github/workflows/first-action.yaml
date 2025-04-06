@@ -27,7 +27,7 @@ jobs:
       echo "ref name is ${{github.ref}}"
       echo "sha name is ${{github.sha}}"
       echo "actor name is ${{github.actor}}"
-      echo "env name is ${{env.myjob}}"
+      echo "env name is $myjob"
  ubuntu-echo2:
   runs-on: ubuntu-latest
   steps:
