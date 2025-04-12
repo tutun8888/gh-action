@@ -21,7 +21,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
   - name: Failing step
-    run: exit(0)
+    run: echo "Hello"
   - name: I will be skipped
     if: ${{success()}}
     run: echo "I will print if previous steps succeed"
