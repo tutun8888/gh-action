@@ -3,7 +3,9 @@ run-name: contexts ${{inputs.debug && 'ON'||'OFF'}}
 env:
  myjob: "Current"
 on: 
+ pull_request:
  workflow_dispatch:
+
   inputs:
    debug:
     type: boolean
@@ -15,19 +17,15 @@ on:
  
   
 jobs:
- ubuntu-echo:
+ echo:
   runs-on: ubuntu-latest
-  env:
-   myjob: "new"
   steps:
-  - name: show the os
-    if: ${{inputs.debug}}
-    run: | 
-      echo "event name is ${{github.event_name}}"
-      echo "ref name is ${{github.ref}}"
-      echo "sha name is ${{github.sha}}"
-      echo "actor name is ${{github.actor}}"
-      echo "env name is $myjob"
+  - name: Failing step
+    run: exit(1)
+  - name: I will be skipped
+    if: ${{success()}}
+    run: echo "I will print if previous steps succeed"
+  
  ubuntu-echo2:
   runs-on: ubuntu-latest
   steps:
