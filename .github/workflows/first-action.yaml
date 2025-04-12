@@ -30,7 +30,7 @@ jobs:
   - name: Failing tests
     if: ${{!inputs.pass-unit-tests}}
     run: exit 1
-  -
+  
   
  ubuntu-echo2:
   runs-on: ubuntu-latest
