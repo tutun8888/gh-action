@@ -10,19 +10,8 @@ on:
    dry-run:
     type: boolean
     default: false
-    description: "Skip deployment and only print build output"
-   target:
-    type: environment
-    required: true
-    description: "Which environment the workflow will target"
-   tag:
-    type: choice
-    options:
-      - v1
-      - v2
-      - v3
-    default: v3
-    description: "Skip deployment and only print build output"  
+    description: "hey whatsapp"
+   
     
    
 
@@ -33,8 +22,8 @@ jobs:
  build:
   runs-on: ubuntu-latest
   steps:
-  - name: Lint and build
-    run: echo "Build from ${{inputs.tag}}"
+  - name: print output
+    run: echo "Build from ${{$GITHUB_OUTPUT}}"
  unit-test:
   runs-on: ubuntu-latest
   continue-on-error: true
