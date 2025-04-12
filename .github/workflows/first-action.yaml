@@ -30,7 +30,14 @@ jobs:
   - name: Failing tests
     if: ${{!inputs.pass-unit-tests}}
     run: exit 1
-  
+ deploy-non-prod:
+  runs-on: ubuntu-latest
+  needs:
+   - lint-build
+   - unit-test
+  steps:
+  - name: nonprod
+    run: echo "Deploying to nonprod..."
   
  ubuntu-echo2:
   runs-on: ubuntu-latest
