@@ -28,6 +28,12 @@ jobs:
   - name: I will be skipped
     if: ${{failure()}}
     run: echo "I will print if previous steps fails"
+  - name: I will be skipped
+    if: ${{!cancelled()}}
+    run: echo "I will print if not cancel"
+  - name: I will be skipped
+    if: ${{cancelled()}}
+    run: echo "I will print if cancel"
   
  ubuntu-echo2:
   runs-on: ubuntu-latest
