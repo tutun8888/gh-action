@@ -7,7 +7,7 @@ on:
  workflow_dispatch:
 
   inputs:
-   debug:
+   pass-unit-tests:
     type: boolean
     default: false
     
@@ -17,23 +17,20 @@ on:
  
   
 jobs:
- echo:
+ lint-build:
   runs-on: ubuntu-latest
   steps:
-  - name: Failing step
-    run: echo "Hello"
-  - name: I will be skipped
-    if: ${{success()}}
-    run: echo "I will print if previous steps succeed"
-  - name: I will be skipped
-    if: ${{failure()}}
-    run: echo "I will print if previous steps fails"
-  - name: I will be skipped
-    if: ${{!cancelled()}}
-    run: echo "I will print if not cancel"
-  - name: I will be skipped
-    if: ${{cancelled()}}
-    run: echo "I will print if cancel"
+  - name: Lint and build
+    run: echo "Linting and building project"
+ unit-test:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Running unit tests
+    run: echo "Running tests..."
+  - name: Failing tests
+    if: ${{!input.pass-unit-tests}}
+    run: exit 1
+  -
   
  ubuntu-echo2:
   runs-on: ubuntu-latest
