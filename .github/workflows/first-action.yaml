@@ -1,61 +1,48 @@
 name: Event filters and activity types
-run-name: contexts env ${{inputs.target-env}}
-env:
- myjob: "Current"
+
 on: 
  pull_request:
- workflow_dispatch:
+ workflow_call:
 
   inputs:
    target-env:
-    type: environment
+    type: string
     default: staging
    
     description: "hey whatsapp"
+  outputs:
+   build-status:
+    description: "The status of the build process"
+    value: ${{jobs.deploy.outputs.build-status}}
+   url:
+    description: "The url description"
+    value: ${{jobs.deploy.outputs.build-status}}
+jobs:
+  deploy:
+   runs-on: ubuntu-latest
+   outputs:
+     build-status: ${{steps.build.outputs.build-status}}
+     url: ${{steps.deploy.outputs.url}}
+   steps:
+    - name: checkout repo
+      uses: actions/checkout@v4
+    - name: Build
+      id: build
+      run: |
+       echo "Building using directory ${{inputs.target-env}}
+       echo "build-status=Success" >> "$GITHUB_OUTPUT"
+    - name: Deploy
+      id: deploy
+      run: |
+       echo "Building using directory ${{inputs.target-env}}
+       echo "url= https://www.google.com" >> "$GITHUB_OUTPUT"
+    
+   
+   
+   
    
     
    
 
  
  
-  
-jobs:
- backwards-compatibility:
-  runs-on: ${{ matrix.os}}
-  strategy:
-   matrix:
-    node-version: [18.x,20.x,21.x]
-    os: [ubuntu-latest,windows-latest]
-    exclude:
-      - node-version: 21.x
-        os: windows-latest
-  outputs:
-   build-status: ${{steps.build.outputs.status}}
-  steps:
-  - name: setup node
-    uses: actions/setup-node@v3
-    with:
-     node-version: ${{matrix.node-version}}
-  - name: Perform test
-    run: echo "running test on ${{matrix.os}} and in ${{matrix.node-version}}"
-     
-    
-  
- unit-test:
-  runs-on: ubuntu-latest
-  continue-on-error: true
-  steps:
-  - name: Running unit tests
-    run: echo "Running tests..."
-  - name: Failing tests
-    if: ${{!inputs.pass-unit-tests}}
-    run: exit 1
- 
-  
- ubuntu-echo2:
-  runs-on: ubuntu-latest
-  steps:
-  - name: show the os
-    run: | 
-      echo "Retrive value is ${{vars.MY_VAR}}"
-     
