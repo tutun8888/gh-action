@@ -1,5 +1,5 @@
 name: Event filters and activity types
-run-name: contexts ${{inputs.debug && 'ON'||'OFF'}}
+run-name: contexts env ${{inputs.env}}
 env:
  myjob: "Current"
 on: 
@@ -7,12 +7,10 @@ on:
  workflow_dispatch:
 
   inputs:
-   build-status:
-    type: choice
-    default: Success
-    options:
-     - Success
-     - Failure
+   target-env:
+    type: environment
+    default: staging
+   
     description: "hey whatsapp"
    
     
