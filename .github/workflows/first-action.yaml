@@ -1,5 +1,5 @@
 name: Event filters and activity types
-run-name: contexts env ${{inputs.env}}
+run-name: contexts env ${{inputs.target-env}}
 env:
  myjob: "Current"
 on: 
