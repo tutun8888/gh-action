@@ -34,7 +34,8 @@ jobs:
   steps:
   - name: setup node
     uses: actions/setup-node@v3
-    with: ${{matrix.node-version}}
+    with:
+     node-version: ${{matrix.node-version}}
   - name: Perform test
     run: running test on ${{matrix.os}} and in ${{matrix.node-version}}
      
