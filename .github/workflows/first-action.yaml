@@ -16,7 +16,7 @@ on:
     value: ${{jobs.deploy.outputs.build-status}}
    url:
     description: "The url description"
-    value: ${{jobs.deploy.outputs.build-status}}
+    value: ${{jobs.deploy.outputs.url}}
 jobs:
   deploy:
    runs-on: ubuntu-latest
