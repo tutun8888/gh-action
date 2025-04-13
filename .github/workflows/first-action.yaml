@@ -34,7 +34,7 @@ jobs:
     - name: Deploy
       id: deploy
       run: |
-       echo "Building using directory ${{inputs.target-env}}
+       echo "Building using directory ${{inputs.target-env}}"
        echo "url= https://www.google.com" >> "$GITHUB_OUTPUT"
     
    
