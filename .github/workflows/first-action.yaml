@@ -24,9 +24,14 @@ on:
 jobs:
  build:
   runs-on: ubuntu-latest
+  outputs:
+   build-status: ${{steps.build.outputs.status}}
   steps:
   - name: print output
     run: echo "Build from $GITHUB_OUTPUT"
+  - name: build2
+    id: build
+    run: echo "status=success">> $GITHUB_OUTPUT
  unit-test:
   runs-on: ubuntu-latest
   continue-on-error: true
