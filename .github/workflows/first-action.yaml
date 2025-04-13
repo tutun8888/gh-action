@@ -36,8 +36,7 @@ jobs:
   runs-on: ubuntu-latest
   needs:
   - build
-  if:
-   ${{needs.build.outputs.build-status == "Success"}}
+  if: ${{needs.build.outputs.build-status == 'Success'}}
   steps:
   - name: print output
     run: echo "Build from $GITHUB_OUTPUT"
