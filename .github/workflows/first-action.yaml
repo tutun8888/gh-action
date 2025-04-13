@@ -7,9 +7,12 @@ on:
  workflow_dispatch:
 
   inputs:
-   dry-run:
-    type: boolean
-    default: false
+   build-status:
+    type: choice
+    default: Success
+    options:
+     - Success
+     - Failure
     description: "hey whatsapp"
    
     
