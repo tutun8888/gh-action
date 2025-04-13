@@ -29,7 +29,7 @@ jobs:
     - name: Build
       id: build
       run: |
-       echo "Building using directory ${{inputs.target-env}}
+       echo "Building using directory ${{inputs.target-env}}"
        echo "build-status=Success" >> "$GITHUB_OUTPUT"
     - name: Deploy
       id: deploy
