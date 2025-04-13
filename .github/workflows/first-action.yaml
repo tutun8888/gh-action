@@ -39,10 +39,7 @@ jobs:
     run: running test on ${{matrix.os}} and in ${{matrix.node-version}}
      
     
-  - name: build2
-    id: build
-    run: echo "status=${{inputs.build-status}}">> $GITHUB_OUTPUT
- 
+  
  unit-test:
   runs-on: ubuntu-latest
   continue-on-error: true
